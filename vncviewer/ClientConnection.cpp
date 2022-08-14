@@ -7442,7 +7442,7 @@ void ClientConnection::UpdateStatusFields()
 void ClientConnection::GTGBS_CreateDisplay()
 {
 	// Das eigendliche HauptFenster erstellen,
-	// welches das VNC-Fenster und die Toolbar enthält
+	// welches das VNC-Fenster und die Toolbar enthï¿½lt
 	WNDCLASS wndclass;
 
 	wndclass.style			= 0;
@@ -7815,7 +7815,8 @@ LRESULT CALLBACK ClientConnection::WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, 
 						break;
 
 					case SC_MAXIMIZE:					
-						_this->SetFullScreenMode(!_this->InFullScreenMode());
+						//_this->SetFullScreenMode(!_this->InFullScreenMode());
+						ShowWindow(_this->m_hwndStatus, SW_MAXIMIZE);
 						break;
 
 					case SC_RESTORE:
@@ -8325,7 +8326,8 @@ LRESULT CALLBACK ClientConnection::WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, 
 				case WM_SETFOCUS:
 					if (_this->InFullScreenMode() && !_this->m_pFileTransfer->m_fFileTransferRunning && !_this->m_pTextChat->m_fTextChatRunning && !_this->m_fOptionsOpen)
 					{
-						SetWindowPos(hwnd, HWND_TOPMOST, 0,0,100,100, SWP_NOMOVE | SWP_NOSIZE);
+						//SetWindowPos(hwnd, HWND_TOPMOST, 0,0,100,100, SWP_NOMOVE | SWP_NOSIZE);
+						SetWindowPos(hwnd, HWND_TOP, 0, 0, 100, 100, SWP_NOMOVE | SWP_NOSIZE);
 					}
 
 					TheAccelKeys.SetWindowHandle(_this->m_opts->m_NoHotKeys ? 0 : hwnd);
@@ -9167,7 +9169,8 @@ LRESULT CALLBACK ClientConnection::WndProchwnd(HWND hwnd, UINT iMsg, WPARAM wPar
 				{
 					//HWND handleW1 = FindWindow("Shell_traywnd", "");
    					//SetWindowPos(handleW1, 0, 0, 0, 0, 0, 128);
-					SetWindowPos(hwnd, HWND_TOPMOST, 0,0,100,100, SWP_NOMOVE | SWP_NOSIZE);
+					//SetWindowPos(hwnd, HWND_TOPMOST, 0,0,100,100, SWP_NOMOVE | SWP_NOSIZE);
+					SetWindowPos(hwnd, HWND_TOP, 0, 0, 100, 100, SWP_NOMOVE | SWP_NOSIZE);
 				}
 				_this->m_keymap->Reset();				
 				return 0;

@@ -146,7 +146,8 @@ void ClientConnection::RealiseFullScreenMode()
 			cx = tdc.monarray[0].width;
 		}
 
-		SetWindowPos(m_hwndMain, HWND_TOPMOST, x, y, cx, cy, SWP_FRAMECHANGED);
+		//SetWindowPos(m_hwndMain, HWND_TOPMOST, x, y, cx, cy, SWP_FRAMECHANGED);
+		SetWindowPos(m_hwndMain, HWND_TOP, x, y, cx, cy, SWP_FRAMECHANGED);
         TitleBar.MoveToMonitor(hMonitor);
 		// adzm - 2010-07 - Extended clipboard
 		CheckMenuItem(m_hPopupMenuDisplay, ID_FULLSCREEN, MF_BYCOMMAND|MF_CHECKED);
